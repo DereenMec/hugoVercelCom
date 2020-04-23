@@ -2,7 +2,7 @@
 # If you want to see the full configuration, please check `full-config.toml` .
 # And see https://gohugo.io/getting-started/configuration/ .
 
-baseURL = "https://blog.dereen.top"
+baseURL = "https://happy.dereen.top"
 title = "Dereen - 深海游泳"
 enableRobotsTXT = true
 enableEmoji = true
