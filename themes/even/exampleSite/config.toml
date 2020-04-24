@@ -16,7 +16,7 @@ pygmentsCodefencesGuessSyntax = true
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
 paginate = 5                                              # 首页每页显示的文章数
-disqusShortname = "dereen"      # disqus_shortname
+disqusShortname = ""      # disqus_shortname
 googleAnalytics = "UA-164262586-1"      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
 
@@ -141,10 +141,10 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     repo = ""               # The repo to store comments
 
   [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
+    owner = "dereenmec"              # Your GitHub ID
+    repo = "HugoBlog"               # The repo to store comments
+    clientId = "705e9480218fc768dbb7"           # Your client ID
+    clientSecret = "e76c185a48fdfc4cf4d1c09c26dcb6862680d6b9"       # Your client secret
 
   # Valine.
   # You can get your appid and appkey from https://leancloud.cn

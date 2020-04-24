@@ -19,7 +19,7 @@ hasCJKLanguage = true     # has chinese/japanese/korean ?
 # 自动检测是否包含 中文\日文\韩文
 paginate = 5              # Number of articles displayed on the homepage  # 首页每页显示的文章数
 rssLimit = 20             # Limit Entry Count to Rss file # 限制 Rss 文章输出数量
-disqusShortname = "dereen"      # disqus_shortname
+disqusShortname = ""      # disqus_shortname
 googleAnalytics = "UA-164262586-1"      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
 
@@ -84,6 +84,11 @@ defaultContentLanguage = "en"           # Default language to use
   toc = true                                                                            # 是否开启目录
   photoswipe = true         # see https://github.com/dimsemenov/PhotoSwipe            # 是否启用PhotoSwipe（图片可点击）
   contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+
+  [params.utteranc]         # utteranc is a comment system based on GitHub issues. see https://utteranc.es
+    enable = true
+    repo = "DereenMec/hugovercelcom"    # The repo to store comments
+    issueTerm = "pathname"
 
   # Link custom CSS and JS assets
   #   (relative to /static/css and /static/js respectively)
