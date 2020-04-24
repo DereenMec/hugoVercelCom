@@ -98,11 +98,11 @@ defaultContentLanguage = "en"           # Default language to use
   [params.social]                                         # 社交链接
     a-email = "mailto:dereenmec@outlook.com"
   #  b-stack-overflow = "http://localhost:1313"
-   # c-twitter = "http://localhost:1313"
+    c-twitter = "https://twitter.com/dereen_"
     d-facebook = "https://www.facebook.com/xbzzhc"
   #  e-linkedin = "http://localhost:1313"
   #  f-google = "http://localhost:1313"
-  #  g-github = "http://localhost:1313"
+    g-github = "https://github.com/dereenmec"
     h-weibo = "https://weibo.com/xbzzhc"
   #  i-zhihu = "http://localhost:1313"
   #  j-douban = "http://localhost:1313"
