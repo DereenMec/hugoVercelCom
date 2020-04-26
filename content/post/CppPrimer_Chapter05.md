@@ -13,6 +13,8 @@ autoCollapseToc: false
 
 
 
+本章主要介绍条件语句、循环语句、跳转语句和Try语句块以及异常处理。
+
 <!--more-->
 
 ## 条件语句
