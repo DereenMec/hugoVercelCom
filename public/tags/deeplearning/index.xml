@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DeepLearning on Dereen - 深海游泳</title>
+    <link>https://happy.dereen.top/tags/deeplearning/</link>
+    <description>Recent content in DeepLearning on Dereen - 深海游泳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 25 Apr 2019 11:20:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://happy.dereen.top/tags/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu 下安装Anaconda &#43; 显卡驱动 &#43; CUDA &#43; CUDNN &#43; 离线安装环境</title>
+      <link>https://happy.dereen.top/post/dlenv/</link>
+      <pubDate>Thu, 25 Apr 2019 11:20:09 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dlenv/</guid>
+      <description>写来给自己备忘，并不是什么教程- 。-
+ 下载安装包   Anaconda：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+  显卡驱动：https://www.nvidia.cn/Download/index.aspx?lang=cn
+  CUDA：https://developer.nvidia.com/cuda-toolkit-archive
+  CUDNN：https://developer.nvidia.com/rdp/cudnn-download
+  安装 Anaconda bash ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh # 如果忘记在conda init 那个选项选择yes 则： # source &amp;lt;path to conda&amp;gt;/bin/activate # conda init # 如果不想打开Terminal 就激活base env，则： # conda config --set auto_activate_base False 离线情况下安装环境：
+# 拷贝已有环境文件夹 /envs/myenv # 完成迁移 conda create -n myenv_2 --clone path/myenv --offline 显卡驱动 ⚠️在安装显卡驱动前，记得关闭主板的security boot，这是因为Linux 的自带显卡驱动是nouveau，而英伟达的官方驱动这时候成了第三方驱动。security boot禁止第三方驱动。
+# 禁用nouveau sudo vim /etc/modprobe.d/blacklist.conf # 在文件最后插入下面两行 blacklist nouveau options nouveau modeset=0 # 更新系统 sudo update-initramfs -u # 重启系统 # 验证nouveau 是否已禁用，无输出则说明已经禁用 lsmod | grep nouveau # 按ctrl + alt + F6 进入命令行 # 关闭图形界面 sudo service lightdm stop # 卸载原有Nvidia 驱动 sudo apt-get remove nvidia-* # 给安装文件赋予执行权限 sudo chmod a+x NVIDIA-Linux-x86_64-410.</description>
+    </item>
+    
+  </channel>
+</rss>

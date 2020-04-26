@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>爬虫 on Dereen - 深海游泳</title>
+    <link>https://happy.dereen.top/tags/%E7%88%AC%E8%99%AB/</link>
+    <description>Recent content in 爬虫 on Dereen - 深海游泳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 06 Oct 2018 12:46:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://happy.dereen.top/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PythonNotes.爬虫</title>
+      <link>https://happy.dereen.top/post/pythonnotes05/</link>
+      <pubDate>Sat, 06 Oct 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonnotes05/</guid>
+      <description>要使用Python 抓取网页，首先我们要学习下面四个模块：
+   包 作用     webbrowser 打开浏览器获取指定页面；   requests 从因特网下载文件和网页；   Beautiful Soup 解析HTML，即网页编码的格式；   selenium 启动并控制一个Web 浏览器，能够填写表单，并模拟鼠标点击。    小项目：利用webbrowser 模块的bilibiliSearch.py webbrowser 模块的open()函数可以启动一个新浏览器，打开指定的URL。
+import webbrowser webbrowser.open(&amp;#34;https://bilibili.com&amp;#34;) 例如运行上面的这段代码，系统就会启动一个新的标签页，打开B站了。但是，这也是webbrowser 模块唯一能做的事了。
+假如我们要实现一个功能：使用Bilibili 搜索指定或剪贴板中的文字。那我们的程序需要做到：
+ 从命令行参数或剪贴板中取得要搜索的内容； 打开Web 浏览器，指向搜索结果。  弄清指定地点的Bilibili Search Url 地址 我们首先在B站手动搜索“孙笑川 鬼畜”，可以发现地址栏的Url 网址为：“https://search.bilibili.com/all?keyword=孙笑川%20鬼畜”，于是我们可以发现，只要将要搜索的内容放在keyword= 后即可，多个关键字用空格分开，在网址中为20%表示。
+处理命令行参数 为了从命令行参数中导入要搜索的内容，我们需要导入sys 包，并使用sys.argv来取得其内容。
+处理剪贴板内容 使用pyperclip 包中的pyperclip.paste()函数来取得剪贴板中的内容。
+于是，整个程序的代码如下：
+import webbrowser, sys, pyperclip if len(sys.argv) &amp;gt; 1: # Get address from command line.</description>
+    </item>
+    
+  </channel>
+</rss>

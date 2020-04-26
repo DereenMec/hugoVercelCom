@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Dereen - 深海游泳</title>
+    <link>https://happy.dereen.top/post/</link>
+    <description>Recent content in Posts on Dereen - 深海游泳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 24 Apr 2020 13:48:42 +0800</lastBuildDate>
+    
+	<atom:link href="https://happy.dereen.top/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CppPrimer05.语句</title>
+      <link>https://happy.dereen.top/post/cppprimer_chapter05/</link>
+      <pubDate>Fri, 24 Apr 2020 13:48:42 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/cppprimer_chapter05/</guid>
+      <description>&lt;p&gt;本章主要介绍条件语句、循环语句、跳转语句和Try语句块以及异常处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CppPrimer04.表达式</title>
+      <link>https://happy.dereen.top/post/cppprimer_chapter04/</link>
+      <pubDate>Fri, 24 Apr 2020 13:31:42 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/cppprimer_chapter04/</guid>
+      <description>&lt;p&gt;本章最主要的内容有：左值和右值、求值顺序、&lt;strong&gt;位运算符&lt;/strong&gt;、&lt;strong&gt;类型转换&lt;/strong&gt;以及最后所附的&lt;strong&gt;运算符优先级表&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CppPrimer03.字符串、向量和数组</title>
+      <link>https://happy.dereen.top/post/cppprimer_chapter03/</link>
+      <pubDate>Fri, 24 Apr 2020 13:22:52 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/cppprimer_chapter03/</guid>
+      <description>&lt;p&gt;除了第二章的内置类型之外，C++还定义了一个内容丰的抽象数据类型库。string和vector是两种最重要的标准库类型，前者支持可变长字符串，后者则表示可变长的集合。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CppPrimer02.变量和基本类型</title>
+      <link>https://happy.dereen.top/post/cppprimer_chapter02/</link>
+      <pubDate>Fri, 24 Apr 2020 12:57:12 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/cppprimer_chapter02/</guid>
+      <description>&lt;p&gt;本章主要介绍内置类型，并初步说明C++语言是如何支持更复杂数据类型的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CppPrimer01.开始</title>
+      <link>https://happy.dereen.top/post/cppprimer_chapter01/</link>
+      <pubDate>Fri, 24 Apr 2020 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/cppprimer_chapter01/</guid>
+      <description>&lt;p&gt;本章介绍C++的大部分基础内容：类型、变量、表达式、语句及函数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 拨号上网及校园网开启IPV6</title>
+      <link>https://happy.dereen.top/post/ubuntunetwork/</link>
+      <pubDate>Wed, 07 Aug 2019 11:20:09 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/ubuntunetwork/</guid>
+      <description>Ubuntu 18.04下有两种方法实现拨号上网，第一种是通过图形界面添加，需要开启自动连接，并且要关闭以太网的自动连接。（不推荐这种连接方式）这里介绍第二种，通过pppoeconf命令进行拨号。
+关闭以太网 在使用pppoeconf命令拨号前，我们可以直接禁用掉以太网络，这样就不会每次都弹“有线网络1”无法连接网络那种怪提示。
+使用pppoeconf进行拨号连接 在终端输入sudo pppoeconf
+输入你的用户名（由ISP所提供 注意：输入时请先清除输入框中的“username“，否则可能造成验证错误）。 输入你的密码（由ISP所提供）。 如果你已经配置了一个PPPoE的连接，会通知你这个连接将会被修改。 弹出一个选项:你被询问是否需要&amp;rsquo;noauth&#39;和&amp;rsquo;defaultroute&#39;选项和去掉&amp;rsquo;nodetach&amp;rsquo;,这里选择&amp;quot;Yes&amp;rdquo;。 Use peer DNS - 选择 &amp;ldquo;Yes&amp;rdquo;. Limited MSS problem - 选择 &amp;ldquo;Yes&amp;rdquo;. 当你被询问是否在需要在进入系统的时候自动连接，你可以选择&amp;quot;Yes&amp;rdquo;。 最后，你会被询问是否马上建立连接。  开启ipv6 通过pppoeconf配置的拨号网络本身只开启了IPV4，所以我们需要手动修改配置文件，使其支持IPV6。
+在终端输入sudo gedit /etc/ppp/options，在最后一行添加如下字段并保存：
++ipv6 ipv6cp-use-ipaddr
+修改动态IPV6地址 sudo gedit /etc/sysctl.d/10-ipv6-privacy.conf
+将net.ipv6.conf.default.use_tempaddr改为0。
+重启系统或者，重新拨号，你会发现可以使用IPV6了 </description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 下安装Anaconda &#43; 显卡驱动 &#43; CUDA &#43; CUDNN &#43; 离线安装环境</title>
+      <link>https://happy.dereen.top/post/dlenv/</link>
+      <pubDate>Thu, 25 Apr 2019 11:20:09 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dlenv/</guid>
+      <description>写来给自己备忘，并不是什么教程- 。-
+ 下载安装包   Anaconda：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+  显卡驱动：https://www.nvidia.cn/Download/index.aspx?lang=cn
+  CUDA：https://developer.nvidia.com/cuda-toolkit-archive
+  CUDNN：https://developer.nvidia.com/rdp/cudnn-download
+  安装 Anaconda bash ~/Downloads/Anaconda3-2019.10-Linux-x86_64.sh # 如果忘记在conda init 那个选项选择yes 则： # source &amp;lt;path to conda&amp;gt;/bin/activate # conda init # 如果不想打开Terminal 就激活base env，则： # conda config --set auto_activate_base False 离线情况下安装环境：
+# 拷贝已有环境文件夹 /envs/myenv # 完成迁移 conda create -n myenv_2 --clone path/myenv --offline 显卡驱动 ⚠️在安装显卡驱动前，记得关闭主板的security boot，这是因为Linux 的自带显卡驱动是nouveau，而英伟达的官方驱动这时候成了第三方驱动。security boot禁止第三方驱动。
+# 禁用nouveau sudo vim /etc/modprobe.d/blacklist.conf # 在文件最后插入下面两行 blacklist nouveau options nouveau modeset=0 # 更新系统 sudo update-initramfs -u # 重启系统 # 验证nouveau 是否已禁用，无输出则说明已经禁用 lsmod | grep nouveau # 按ctrl + alt + F6 进入命令行 # 关闭图形界面 sudo service lightdm stop # 卸载原有Nvidia 驱动 sudo apt-get remove nvidia-* # 给安装文件赋予执行权限 sudo chmod a+x NVIDIA-Linux-x86_64-410.</description>
+    </item>
+    
+    <item>
+      <title>国内可用Anaconda 源的镜像站及换国内源方法</title>
+      <link>https://happy.dereen.top/post/pythonsource/</link>
+      <pubDate>Mon, 25 Mar 2019 11:20:09 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonsource/</guid>
+      <description>目前清华开源镜像站和中科大开源镜像站均已发出公告表示已取得Anaconda授权，不久就将重新上线Anaconda软件源（见文末图）。那目前我知道的国内可用Anaconda源的镜像站就有3个，分别是清华、中科大、上交。大家可以分别测试一下下载速度和稳定性，自行选择最优的。
+各个镜像站的设置方法如下，这里只添加了3个常用的频道，如果要添加更多频道请自行添加。
+选择下面一个镜像站的代码复制并替换下面文件中的全部内容，windows为“C:\用户\你的用户名\.condarc”，Linux为&amp;rdquo;/home/你的用户名/.condarc&amp;rdquo;。（若没有这个文件就新建一个，注意文件名为.condarc，不要有任何其他后缀）
+ 清华大学开源软件镜像站  channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ ssl_verify: true  上海交通大学开源镜像站  channels: - https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/main/ - https://mirrors.sjtug.sjtu.edu.cn/anaconda/pkgs/free/ - https://mirrors.sjtug.sjtu.edu.cn/anaconda/cloud/conda-forge/ ssl_verify: true  中国科学技术大学 USTC Mirror  channels: - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/ - https://mirrors.ustc.edu.cn/anaconda/pkgs/free/ - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/ ssl_verify: true 同时建议更换PIP 源，方法见这里 </description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.Pandas数据处理&#43;Matplotlib绘图案例</title>
+      <link>https://happy.dereen.top/post/dataprocess10/</link>
+      <pubDate>Wed, 05 Dec 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess10/</guid>
+      <description>利用pandas对数据进行预处理然后再使用matplotlib对处理后的数据进行数据可视化是数据分析中常用的方法。
+第一组例子(星巴克咖啡店)  假如我们现在有这样一组数据：星巴克在全球的咖啡店信息，如下图所示。数据来源：starbucks_store_locations。
+ 店铺总数排名前10的国家 # coding=utf-8 # 统计店铺数排名前10的国家 import pandas as pd from matplotlib import pyplot as plt from matplotlib import font_manager # 准备工作 font = font_manager.FontProperties(fname=&amp;#34;/usr/share/fonts/truetype/wqy/wqy-microhei.ttc&amp;#34;) file_path = &amp;#34;./starbucks_store_worldwide.csv&amp;#34; df = pd.read_csv(file_path) # 处理数据 data1 = df.groupby(by=&amp;#34;Country&amp;#34;).count().sort_values(by=&amp;#34;Brand&amp;#34;, ascending=False)[:10][&amp;#34;Brand&amp;#34;] _x = data1.index _y = data1.values # 画图 plt.figure(figsize=(10,8), dpi=80) plt.bar(range(len(_x)), _y, width=0.5) plt.xticks(range(len(_x)), _x) plt.xlabel(&amp;#34;国家&amp;#34;, fontproperties=font) plt.ylabel(&amp;#34;店铺数&amp;#34;, fontproperties=font) plt.title(&amp;#34;星巴克咖啡店铺数排行前10（国家）&amp;#34;, fontproperties=font, size=20) plt.show() 结果如图：
+中国店铺数排名前20的城市 # coding=utf-8 # 统计中国店铺数排名前20的城市 import pandas as pd from matplotlib import pyplot as plt from matplotlib import font_manager font = font_manager.</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.关于matplotlib绘制直方图偏移的问题</title>
+      <link>https://happy.dereen.top/post/dataprocess09/</link>
+      <pubDate>Sun, 02 Dec 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess09/</guid>
+      <description>在使用pyplot绘制直方图的时候我发现了一个问题，在给函数.hist()传参的时候，如果传入的组数不是刚刚好（就是说这个组数如果是使用(最大值-最小值)/组距计算出来，而这个数字不是整除得来而是取整得来的话），图像就会产生偏移现象。
+看下面这段代码：绘制IMDB排行前1000电影的时长分布直方图
+# coding=utf-8 from matplotlib import pyplot as plt import pandas as pd # 数据准备 file_path = &amp;#34;./IMDB-Movie-Data.csv&amp;#34; df = pd.read_csv(file_path) runtime_data = df[&amp;#34;Runtime (Minutes)&amp;#34;] # 计算组数 max_runtime = max(runtime_data) min_runtime = min(runtime_data) num_bin = int((max_runtime-min_runtime)//6) # 配置图形参数 plt.figure(figsize=(20, 8), dpi=80) plt.grid(alpha=0.5) # 绘图 plt.hist(runtime_data, num_bin) plt.xticks(range(min_runtime, max_runtime+6, 6)) plt.show() 结果如下：  产生这个问题的原因就在于，在这个程序中max_runtime-min_runtime的值是125，不能被6整除，所以产生了偏移。 如果我们将上述代码中的(max_runtime-min_runtime)//6和plt.xticks(range(min_runtime, max_runtime+6, 6))中的6更换为一个能被125整除的数，比如5，结果会是如何呢？  我们可以看到问题解决了，偏移消失了，但是这并不是解决问题的根本办法，如果我们就是要用6作为组距而不想偏移呢？ 我们可以传入一个列表参数来解决这个问题  # coding=utf-8 from matplotlib import pyplot as plt import pandas as pd # 数据准备 file_path = &amp;#34;.</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.Pandas之索引</title>
+      <link>https://happy.dereen.top/post/dataprocess08/</link>
+      <pubDate>Fri, 30 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess08/</guid>
+      <description>Pandas的标签处理需要分成多种情况来处理,Series和DataFrame根据标签索引数据的操作方法是不同的,单列索引和双列索引的操作方法也是不同的。
+单列索引 In [2]: import pandas as pd In [3]: import numpy as np In [4]: df = pd.DataFrame(np.ones((2, 4)), index=list(&amp;#34;AB&amp;#34;), columns=list(&amp;#34;abcd&amp;#34;)) In [5]: df.iloc[0,0]=100 In [6]: df Out[6]: a b c d A 100.0 1.0 1.0 1.0 B 1.0 1.0 1.0 1.0 reindex所插入的标签如果是原来的标签中没有的，就会将该行的值全部置为NaN In [7]: df.reindex([&amp;#34;A&amp;#34;, &amp;#34;f&amp;#34;]) Out[7]: ssss a b c d A 100.0 1.0 1.0 1.0 f NaN NaN NaN NaN In [8]: df Out[8]: a b c d A 100.</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.pandas之时间序列</title>
+      <link>https://happy.dereen.top/post/dataprocess07/</link>
+      <pubDate>Fri, 23 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess07/</guid>
+      <description>Pandas的标签处理需要分成多种情况来处理,Series和DataFrame根据标签索引数据的操作方法是不同的,单列索引和双列索引的操作方法也是不同的。
+单列索引 In [2]: import pandas as pd In [3]: import numpy as np In [4]: df = pd.DataFrame(np.ones((2, 4)), index=list(&amp;#34;AB&amp;#34;), columns=list(&amp;#34;abcd&amp;#34;)) In [5]: df.iloc[0,0]=100 In [6]: df Out[6]: a b c d A 100.0 1.0 1.0 1.0 B 1.0 1.0 1.0 1.0 reindex所插入的标签如果是原来的标签中没有的，就会将该行的值全部置为NaN In [7]: df.reindex([&amp;#34;A&amp;#34;, &amp;#34;f&amp;#34;]) Out[7]: ssss a b c d A 100.0 1.0 1.0 1.0 f NaN NaN NaN NaN In [8]: df Out[8]: a b c d A 100.</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.pandas之时间序列</title>
+      <link>https://happy.dereen.top/post/dataprocess06/</link>
+      <pubDate>Mon, 19 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess06/</guid>
+      <description>Pandas中提供了许多用来处理时间格式文本的方法，包括按不同方法生成一个时间序列，修改时间的格式，重采样等等。
+按不同的方法生成时间序列 In [7]: import pandas as pd # 按起始和终止日期以及步长生成时间序列 In [8]: pd.date_range(start=&amp;#34;20171212&amp;#34;,end=&amp;#34;20180101&amp;#34;,freq=&amp;#34;D&amp;#34;) Out[8]: DatetimeIndex([&amp;#39;2017-12-12&amp;#39;, &amp;#39;2017-12-13&amp;#39;, &amp;#39;2017-12-14&amp;#39;, &amp;#39;2017-12-15&amp;#39;, &amp;#39;2017-12-16&amp;#39;, &amp;#39;2017-12-17&amp;#39;, &amp;#39;2017-12-18&amp;#39;, &amp;#39;2017-12-19&amp;#39;, &amp;#39;2017-12-20&amp;#39;, &amp;#39;2017-12-21&amp;#39;, &amp;#39;2017-12-22&amp;#39;, &amp;#39;2017-12-23&amp;#39;, &amp;#39;2017-12-24&amp;#39;, &amp;#39;2017-12-25&amp;#39;, &amp;#39;2017-12-26&amp;#39;, &amp;#39;2017-12-27&amp;#39;, &amp;#39;2017-12-28&amp;#39;, &amp;#39;2017-12-29&amp;#39;, &amp;#39;2017-12-30&amp;#39;, &amp;#39;2017-12-31&amp;#39;, &amp;#39;2018-01-01&amp;#39;], dtype=&amp;#39;datetime64[ns]&amp;#39;, freq=&amp;#39;D&amp;#39;) In [9]: pd.date_range(start=&amp;#34;20171212&amp;#34;,end=&amp;#34;20180101&amp;#34;,freq=&amp;#34;10D&amp;#34;) Out[9]: DatetimeIndex([&amp;#39;2017-12-12&amp;#39;, &amp;#39;2017-12-22&amp;#39;, &amp;#39;2018-01-01&amp;#39;], dtype=&amp;#39;datetime64[ns]&amp;#39;, freq=&amp;#39;10D&amp;#39;) # 按起始日期，数量和步长生成时间序列 In [10]: pd.date_range(start=&amp;#34;20171212&amp;#34;,periods=10,freq=&amp;#34;10D&amp;#34;) Out[10]: DatetimeIndex([&amp;#39;2017-12-12&amp;#39;, &amp;#39;2017-12-22&amp;#39;, &amp;#39;2018-01-01&amp;#39;, &amp;#39;2018-01-11&amp;#39;, &amp;#39;2018-01-21&amp;#39;, &amp;#39;2018-01-31&amp;#39;, &amp;#39;2018-02-10&amp;#39;, &amp;#39;2018-02-20&amp;#39;, &amp;#39;2018-03-02&amp;#39;, &amp;#39;2018-03-12&amp;#39;], dtype=&amp;#39;datetime64[ns]&amp;#39;, freq=&amp;#39;10D&amp;#39;) In [11]: pd.date_range(start=&amp;#34;20171212&amp;#34;,periods=10,freq=&amp;#34;M&amp;#34;) Out[11]: DatetimeIndex([&amp;#39;2017-12-31&amp;#39;, &amp;#39;2018-01-31&amp;#39;, &amp;#39;2018-02-28&amp;#39;, &amp;#39;2018-03-31&amp;#39;, &amp;#39;2018-04-30&amp;#39;, &amp;#39;2018-05-31&amp;#39;, &amp;#39;2018-06-30&amp;#39;, &amp;#39;2018-07-31&amp;#39;, &amp;#39;2018-08-31&amp;#39;, &amp;#39;2018-09-30&amp;#39;], dtype=&amp;#39;datetime64[ns]&amp;#39;, freq=&amp;#39;M&amp;#39;) # 如果取不到最后一天，这个时间序列就会停止在前一个生成的日期处 In [12]: pd.</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.Pandas之分组</title>
+      <link>https://happy.dereen.top/post/dataprocess05/</link>
+      <pubDate>Thu, 15 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess05/</guid>
+      <description>&lt;p&gt;假如我们现在有这样一组数据：星巴克在全球的咖啡店信息，如下图所示。数据来源：&lt;a href=&#34;https://www.kaggle.com/starbucks/store-locations&#34;&gt;starbucks_store_locations&lt;/a&gt;。我们想要统计中国每个城市的星巴克商店的数量，那我们应该怎么做呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.Pandas</title>
+      <link>https://happy.dereen.top/post/dataprocess04/</link>
+      <pubDate>Wed, 14 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess04/</guid>
+      <description>&lt;p&gt;&lt;em&gt;pandas&lt;/em&gt; is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.这段话是pandas官方网站对于Pandas的介绍，翻译过来就是：pandas是一个开源的，BSD许可的库，为Python编程语言提供高性能，易于使用的&lt;strong&gt;数据结构和数据分析工具&lt;/strong&gt;。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.Numpy中的广播原则(机制)</title>
+      <link>https://happy.dereen.top/post/dataprocess03/</link>
+      <pubDate>Sun, 11 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess03/</guid>
+      <description>为了了解这个原则，首先我们来看一组例子：
+# 数组直接对一个数进行加减乘除，产生的结果是数组中的每个元素都会加减乘除这个数。 In [12]: import numpy as np In [13]: a = np.arange(1,13).reshape((4, 3)) In [14]: a * 2 Out[14]: array([[ 2, 4, 6], [ 8, 10, 12], [14, 16, 18], [20, 22, 24]]) # 接下来我们看一下数组与数组之间的计算 In [17]: b = np.arange(12,24).reshape((4,3)) In [18]: b Out[18]: array([[12, 13, 14], [15, 16, 17], [18, 19, 20], [21, 22, 23]]) In [19]: a + b Out[19]: array([[13, 15, 17], [19, 21, 23], [25, 27, 29], [31, 33, 35]]) In [20]: c = np.</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.Numpy</title>
+      <link>https://happy.dereen.top/post/dataprocess02/</link>
+      <pubDate>Fri, 09 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess02/</guid>
+      <description>numpy是一个在Python中做科学计算的基础库，重在数值计算，也是大部分PYTHON科学计算库的基础库，多用于在大型、多维数组上执行数值运算。
+数组的定义 import numpy as np # numpy数组的定义方法 a = np.arange(1, 6， 2) b = np.array([1, 3, 5]) c = np.array(range(1, 6， 2)) # 这样产生的a,b,c三个结果是一样的，均为[1, 3, 5] # 这里看一下数组的类型和数组元素的类型的定义和修改，type（a）表示的是数组a的类型，a.dtype则表示的是数组a中元素的类型。 In [1]: import numpy as np In [2]: a = np.array([1, 2, 3]) In [3]: print(a, type(a), a.dtype) [1 2 3] &amp;lt;class &amp;#39;numpy.ndarray&amp;#39;&amp;gt; int32 In [4]: a = np.array([1, 2, 3], dtype = &amp;#34;float64&amp;#34;) In [5]: print(a, type(a), a.dtype) [1. 2. 3.</description>
+    </item>
+    
+    <item>
+      <title>Python数据处理.Matplotlib</title>
+      <link>https://happy.dereen.top/post/dataprocess01/</link>
+      <pubDate>Tue, 06 Nov 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/dataprocess01/</guid>
+      <description>Matplotlib是最流行的Python底层绘图库，主要做数据可视化图表,名字取材于MATLAB。
+折线图 #导入需要用到的模块 from matplotlib import pyplot as plt import random from matplotlib import font_manager #输入x轴和y轴的值（二者必须个数相等一一对应） x = range(0,120) y_1 = [random.randint(26, 31) for i in range(120)] y_2 = [random.randint(29, 42) for j in range(120)] #配置图片大小及清晰度，以及解决中文字体无法显示的问题 fig = plt.figure(figsize=(20,8),dpi = 80) font = font_manager.FontProperties(fname=&amp;#34;C:\Windows\Fonts\msyh.ttc&amp;#34;) #自定义显示x轴刻度文字 _xtick_labels = [&amp;#34;10点{}分&amp;#34;.format(str(i).rjust(2,&amp;#39;0&amp;#39;)) for i in range(60)] _xtick_labels += [&amp;#34;11点{}分&amp;#34;.format(str(i).rjust(2,&amp;#39;0&amp;#39;)) for i in range(60)] #调整x轴刻度间距并指定字体样式 plt.xticks(x[::3], _xtick_labels[::3], rotation = 45, fontproperties=font) plt.yticks(range(min(min(y_1),min(y_2)), max(max(y_1)+1,max(y_2)+1)), fontproperties=font) #添加描述信息 plt.</description>
+    </item>
+    
+    <item>
+      <title>PythonNotes.爬虫</title>
+      <link>https://happy.dereen.top/post/pythonnotes05/</link>
+      <pubDate>Sat, 06 Oct 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonnotes05/</guid>
+      <description>要使用Python 抓取网页，首先我们要学习下面四个模块：
+   包 作用     webbrowser 打开浏览器获取指定页面；   requests 从因特网下载文件和网页；   Beautiful Soup 解析HTML，即网页编码的格式；   selenium 启动并控制一个Web 浏览器，能够填写表单，并模拟鼠标点击。    小项目：利用webbrowser 模块的bilibiliSearch.py webbrowser 模块的open()函数可以启动一个新浏览器，打开指定的URL。
+import webbrowser webbrowser.open(&amp;#34;https://bilibili.com&amp;#34;) 例如运行上面的这段代码，系统就会启动一个新的标签页，打开B站了。但是，这也是webbrowser 模块唯一能做的事了。
+假如我们要实现一个功能：使用Bilibili 搜索指定或剪贴板中的文字。那我们的程序需要做到：
+ 从命令行参数或剪贴板中取得要搜索的内容； 打开Web 浏览器，指向搜索结果。  弄清指定地点的Bilibili Search Url 地址 我们首先在B站手动搜索“孙笑川 鬼畜”，可以发现地址栏的Url 网址为：“https://search.bilibili.com/all?keyword=孙笑川%20鬼畜”，于是我们可以发现，只要将要搜索的内容放在keyword= 后即可，多个关键字用空格分开，在网址中为20%表示。
+处理命令行参数 为了从命令行参数中导入要搜索的内容，我们需要导入sys 包，并使用sys.argv来取得其内容。
+处理剪贴板内容 使用pyperclip 包中的pyperclip.paste()函数来取得剪贴板中的内容。
+于是，整个程序的代码如下：
+import webbrowser, sys, pyperclip if len(sys.argv) &amp;gt; 1: # Get address from command line.</description>
+    </item>
+    
+    <item>
+      <title>PythonNotes.调试</title>
+      <link>https://happy.dereen.top/post/pythonnotes04/</link>
+      <pubDate>Tue, 02 Oct 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonnotes04/</guid>
+      <description>编码占了编程工作量的90%，调试占了另外90%，这是一个流传着的笑话。调试在编程中占有很大的分量，即使专业的程序员也一直在制造缺陷。
+抛出异常 **抛出异常相当于是说：“停止运行这个函数中的代码，将程序执行转到except 语句”。**抛出异常使用raise 语句，在代码中，raise 语句包含以下部分：
+ raise 关键字； 对Exception 函数的调用； 传递给Exception 函数的字符串，包含有用的出错信息。  **通常是调用该函数的代码知道如何处理异常，而不是该函数本身。所以常常会看到raise 语句在一个函数中，try 和except 语句在调用该函数的代码中。**例如：
+def boxPrint(symbol, width, height): if len(symbol) != 1: raise Exception(&amp;#39;symbol must be a single character string.&amp;#39;) if width &amp;lt;= 2: raise Exception(&amp;#39;Width must be greater than 2.&amp;#39;) print(symbol * width) for i in range(height - 2): print(symbol + (&amp;#39; &amp;#39; * (width - 2)) + symbol) print(symbol * width) for sym, w, h in ((&amp;#39;*&amp;#39;, 4, 4), (&amp;#39;0&amp;#39;, 20, 5), (&amp;#39;x&amp;#39;, 1, 3), (&amp;#39;ZZ&amp;#39;, 3, 3)): try: boxPrint(sym, w, h) except Exception as err: print(&amp;#39;An exception happened: &amp;#39; + str(err)) 这个代码的功能是调用一个名为boxPint()的函数，该函数的功能是打印一个盒子，其使用的字符为symbol ，形状为width * height 。如果出现参数不合法，则抛出异常，运行上面的代码，其输出如下：</description>
+    </item>
+    
+    <item>
+      <title>PythonNotes.组织文件</title>
+      <link>https://happy.dereen.top/post/pythonnotes03/</link>
+      <pubDate>Fri, 28 Sep 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonnotes03/</guid>
+      <description>shutil 模块 shutil 模块可以让我们很方便的在Python程序中复制、移动、改名和删除文件。
+复制文件和文件夹 使用shutil.copy()来复制文件，该函数含两个参数，均为字符串格式的路径。当第二个参数为文件时，就将原文件复制过来并改名，当第二个参数为文件夹时，就将原文件复制至该文件夹下。
+&amp;gt;&amp;gt;&amp;gt; import shutil &amp;gt;&amp;gt;&amp;gt; shutil.copy(&amp;#39;oldFolder/hello.txt&amp;#39;, &amp;#39;newFolder&amp;#39;) &amp;#39;newFolder\\hello.txt&amp;#39; &amp;gt;&amp;gt;&amp;gt; shutil.copy(&amp;#39;oldFolder/hello.txt&amp;#39;, &amp;#39;newFolder/hello_2.txt&amp;#39;) &amp;#39;newFolder/hello_2.txt&amp;#39; 值得注意的是，在将文件复制至一个文件夹下时，如果这个文件夹不存在，程序就会误以为你要将原文件命名为第二个参数的名称，导致出现歧义。如下：
+&amp;gt;&amp;gt;&amp;gt; shutil.copy(&amp;#39;oldFolder/hello.txt&amp;#39;, &amp;#39;newFolder&amp;#39;) &amp;#39;newFolder&amp;#39; 使用shutil.copytree()来复制文件夹及其包含的文件。用法如下：
+&amp;gt;&amp;gt;&amp;gt; shutil.copytree(&amp;#39;oldFolder&amp;#39;, &amp;#39;oldFolder_backup&amp;#39;) &amp;#39;oldFolder_backup&amp;#39; 文件和文件夹的移动与改名 使用shutil.move()函数来移动文件或文件夹，用法与上一节的shutil.copy()函数大同小异。
+&amp;gt;&amp;gt;&amp;gt; shutil.move(&amp;#39;oldFolder&amp;#39;, &amp;#39;newFolder&amp;#39;) &amp;#39;newFolder\\oldFolder&amp;#39; &amp;gt;&amp;gt;&amp;gt; shutil.move(&amp;#39;newFolder\\oldFolder\\hello.txt&amp;#39;, &amp;#39;oldFolder_backup\\hello_2.txt&amp;#39;) &amp;#39;oldFolder_backup\\hello_2.txt&amp;#39; 永久删除文件和文件夹  使用os.unlink(path)来永久删除一个文件； os.rmdir(path)来永久删除一个空文件夹； shutil.rmtree(path)来永久删除一个文件夹及其中所有内容。  为了确保不会因为输入有误错误删除重要文件，我们可以先运行下面的程序。
+import os for filename in os.listdir(): if filename.endswith(&amp;#39;.txt&amp;#39;): # os.unlink(filename) print(filename) 再确认无误之后，再删除print行，并去除删除文件行代码的注释。
+使用send2trash 模块安全删除 上一节中的三个方法都是永久的删除文件或文件夹，所以在使用起来可能会有风险。使用send2trash方法可以将文件或文件夹移入回收站，方便误删后的恢复。在使用send2trash方法前，我们先要安装它。
+&amp;gt;&amp;gt;&amp;gt; import send2trash &amp;gt;&amp;gt;&amp;gt; dogList = open(&amp;#39;dog.txt&amp;#39;, &amp;#39;w&amp;#39;) &amp;gt;&amp;gt;&amp;gt; dogList.write(&amp;#34;I&amp;#39;m a cat.</description>
+    </item>
+    
+    <item>
+      <title>PythonNotes.文件的读取写入</title>
+      <link>https://happy.dereen.top/post/pythonnotes02/</link>
+      <pubDate>Wed, 26 Sep 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonnotes02/</guid>
+      <description>文件与文件路径 路径合成 os.path.join() 在Windows上，路径中以倒斜杠作为文件夹之间的分隔符，Linux或OS X中则是正斜杠。如果想要程序正确运行于所有操作系统上，就必须要处理这种情况。os.path.join()方法可以正确的根据不同的操作系统来合成路径，它的用法如下：
+&amp;gt;&amp;gt;&amp;gt; import os &amp;gt;&amp;gt;&amp;gt; os.path.join(&amp;#34;Program&amp;#34;, &amp;#34;QQ&amp;#34;, &amp;#34;Pet&amp;#34;) &amp;#39;Program\\QQ\\Pet&amp;#39; # 在windows下返回的结果 &amp;#39;Program/QQ/Pet&amp;#39; # 在Linux或OS X下返回的结果 &amp;gt;&amp;gt;&amp;gt; myFiles = [&amp;#34;accounts.txt&amp;#34;, &amp;#34;details.csv&amp;#34;, &amp;#34;invite.docx&amp;#34;] &amp;gt;&amp;gt;&amp;gt; for filename in myFiles: ... print(os.path.join(&amp;#34;C:\\Users\\Dereen&amp;#34;, filename)) C:\Users\Dereen\accounts.txt C:\Users\Dereen\details.csv C:\Users\Dereen\invite.docx 查看并改变当前工作目录 使用os.getcwd()来获取当前工作目录，使用os.chdir()来改变当前工作目录。这么做的意义是所有没有从根文件夹开始的文件名或路径，都假定在当前工作目录下。如果当前工作目录错误容易引发各种该问题，或者不想用当前工作目录作为根目录，而是想用别的目录作为根目录。
+&amp;gt;&amp;gt;&amp;gt; os.getcwd() &amp;#39;F:\\Learn\\Automate-the-Boring-Stuff-with-Python-Solutions&amp;#39; &amp;gt;&amp;gt;&amp;gt; os.chdir(&amp;#34;C:\\Windows\\system32&amp;#34;) &amp;gt;&amp;gt;&amp;gt; os.getcwd() &amp;#39;C:\\Windows\\system32&amp;#39; 绝对路径与相对路径  “绝对路径”：总是从根文件夹开始； “相对路径”：它相对于程序的当前工作目录。  例如：C:\Program Files\QQ\music
+假如当前工作目录为C:\Program Files，则对music文件夹来说，其相对路径为：.\QQ\music，绝对路径为：C:\Program Files\QQ\music。
+创建新文件夹 os.makedirs() &amp;gt;&amp;gt;&amp;gt; os.makedirs(&amp;#34;.\\color\\green&amp;#34;) 上面这个命令会直接在当前文件夹下创建新文件夹color并在其下创建新文件夹green
+绝对路径与相对路径互转  相对路径转绝对路径：os.path.abspath(path)将返回参数的绝对路径的字符串。 绝对路径转相对路径：os.path.relpath(path, start)将返回从start路径到path路径的相对路径的字符串。（如果没有提供start，就是用当前工作目录作为开始路径） 判断一个路径是否为绝对路径：os.isabs(path)如果是就返回True，不是就返回False。  例子：
+&amp;gt;&amp;gt;&amp;gt; os.</description>
+    </item>
+    
+    <item>
+      <title>PythonNotes.正则表达式</title>
+      <link>https://happy.dereen.top/post/pythonnotes01/</link>
+      <pubDate>Mon, 24 Sep 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonnotes01/</guid>
+      <description>常用缩写字符及其含义表格查询    缩写字符分类 含义     \d 0-9的任意数字   \D 除0-9的数字以外的任何字符   \w 任何字母、数字或下划线字符（可以认为是匹配“单词”字符）   \W 除字母、数字和下划线意外的任何字符   \s 空格、制表符或换行符（可以认为是匹配“空白”字符）   \S 除空格、制表符或换行符的任何字符   ? 问号紧跟于分组后表示前面分组的内容是可有可无的   * 星号紧跟于分组后表示前面分组的内容匹配0次或多次   + 加号紧跟于分组后表示前面分组的内容匹配至少1次   | 管道匹配多个分组   {} 花括号内加数字表示匹配特定字数   . 句点表示匹配任何字符（除了换行）    在Python中使用正则表达式的步骤 在Python中使用正则表达式主要有下面几个步骤：
+ 用import re导入正则表达式模块； 用re.compile()函数创建一个Regex 对象； 向Regex 对象的search()或findall()方法传入目标字符串； 调用Matches 对象的group()方法，返回实际匹配文本的字符串。  Python正则表达式详细说明 通过在字符串的第一个引号之前加r来向re.</description>
+    </item>
+    
+  </channel>
+</rss>
