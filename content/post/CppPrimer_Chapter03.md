@@ -1,5 +1,5 @@
 ---
-title: "Chapter03.字符串、向量和数组"
+title: "CppPrimer03.字符串、向量和数组"
 date: 2020-04-24T13:22:52+08:00
 lastmod: 2020-04-24T13:22:52+08:00
 draft: false

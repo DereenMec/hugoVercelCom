@@ -1,5 +1,5 @@
 ---
-title: "Chapter06.函数"
+title: "CppPrimer06.函数"
 date: 2020-04-25T11:20:09+08:00
 lastmod: 2020-04-25T11:20:09+08:00
 draft: true
