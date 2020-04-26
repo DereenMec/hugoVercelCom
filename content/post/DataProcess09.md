@@ -1,7 +1,7 @@
 ---
 title: "Python数据处理.关于matplotlib绘制直方图偏移的问题"
-date: 2018-12-2T12:46:25+08:00
-lastmod: 2018-12-2T12:46:25+08:00
+date: 2018-12-02T12:46:25+08:00
+lastmod: 2018-12-02T12:46:25+08:00
 draft: false
 tags: [Python, 数据处理]
 categories: [Python 数据处理]

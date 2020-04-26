@@ -3,8 +3,8 @@ title: "Ubuntu 下安装Anaconda + 显卡驱动 + CUDA + CUDNN + 离线安装环
 date: 2019-04-25T11:20:09+08:00
 lastmod: 2019-04-25T11:20:09+08:00
 draft: false
-tags: [Python, DeepLearning]
-categories: []
+tags: [Python, DeepLearning, Ubuntu]
+categories: [Ubuntu]
 author: "Dereen"
 comment: true
 toc: true
