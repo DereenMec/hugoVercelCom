@@ -24,8 +24,8 @@ googleAnalytics = "UA-164262586-3"      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
 
 # language support # en / zh-cn / other... translations present in i18n/
-defaultContentLanguage = "en"           # Default language to use
-[languages.en]
+defaultContentLanguage = "zh-cn"           # Default language to use
+[languages.zh-cn]
   languageCode = "zh-cn"
 
 [author]                  # essential                     # 必需
