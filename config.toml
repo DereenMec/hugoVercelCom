@@ -121,8 +121,8 @@ defaultContentLanguage = "en"           # Default language to use
     id = "017425305144352626570:ds5k6bsubfx"
     title = "Search"
   [params.reward]                                         # 文章打赏
-    enable = true
+    enable = false
     wechat = "https://files-cdn.cnblogs.com/files/dereen/wechat.bmp"           # 微信二维码
     alipay = "https://files-cdn.cnblogs.com/files/dereen/alipay.bmp"           # 支付宝二维码
   [params.counter.busuanzi]  # a Chinese visitor counter  # 不蒜子计数器
-    enable = true
+    enable = false
