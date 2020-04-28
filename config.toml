@@ -117,7 +117,7 @@ defaultContentLanguage = "en"           # Default language to use
  #   r-codeforces = "http://localhost:1313"
  #   s-mastodon = "http://localhost:1313"
   [params.search.google]    # google custom search, see https://cse.google.com
-    enable = true
+    enable = false
     id = "017425305144352626570:ds5k6bsubfx"
     title = "Search"
   [params.reward]                                         # 文章打赏
@@ -125,4 +125,4 @@ defaultContentLanguage = "en"           # Default language to use
     wechat = "https://files-cdn.cnblogs.com/files/dereen/wechat.bmp"           # 微信二维码
     alipay = "https://files-cdn.cnblogs.com/files/dereen/alipay.bmp"           # 支付宝二维码
   [params.counter.busuanzi]  # a Chinese visitor counter  # 不蒜子计数器
-    enable = false
+    enable = true
