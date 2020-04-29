@@ -11,7 +11,7 @@ toc: true
 autoCollapseToc: false
 ---
 
-
+本章的重要内容：类、构造函数、友元、可变数据成员、explicit抑制隐式类型转换、类的静态成员。
 
 <!--more-->
 
@@ -221,3 +221,72 @@ C++中，编译器只允许一步隐式类型转换，例如`item.combine()`方�
 关键字explicit只对一个实参的构造函数有效。需要多个实参的构造函数不能使用隐式转换，所以无需将这些构造函数指定为explicit的。
 
 ❗explicit只能用于直接初始化，不适用于拷贝初始化。
+
+## 聚合类
+
+聚合类（aggregate class）使得用户可以直接访问其成员，并且具有特殊的初始化语法形式。聚合类满足下列条件：
+
+- 所有成员都是public的
+- 没有定义任何构造函数
+- 没有类内初始值
+- 没有基类，也没有virtual函数
+
+例子：
+
+```cpp
+struct Data {
+    int ival;
+    string s;
+}
+```
+
+初始化一个聚合类：
+
+```cpp
+Data val1 = { 0, "Anc" };
+```
+
+💡如果列表中元素的个数少于类成员个数，那么靠后的成员会被值初始化。
+
+## 字面值常量类
+
+**数据成员都是字面值类型的聚合类是字面值常量类。如果一个类不是聚合类，但它符合下列要求，则它也是一个字面值常量类：**
+
+- 数据成员必须都是字面值类型
+- 类必须至少含有一个constexpr函数
+- 如果一个数据成员含有类内初始值，则内置类型成员的初始值必须是一条常量表达式；或者如果成员属于某种类类型，则初始值必须使用成员自己的constexpr构造函数
+- 类必须使用析构函数的默认定义，该成员负责销毁类的对象
+
+```cpp
+class Debug {
+public:
+    constexpr Debug(bool b = true) : hw(b), io(b), other(b) { }
+    constexpr Debug(bool h, bool i, bool o) : hw(h), io(i), other(o) { }
+    constexpr bool any() { return hw || io || other; }
+    void set_io(bool b) { io = b };
+    void set_hw(bool b) { hw = b };
+    void set_other(bool b) { other = b };
+private:
+    bool hw;
+    bool io;
+    bool other;
+}
+```
+
+## 类的静态成员
+
+类的静态成员存在于该类的任何对象之外，对象中不包含任何与静态数据成员有关的数据。一般来说，我们不能在类的内部初始化静态成员。相反的，必须在类的外部定义和初始化每个静态成员，且每个静态成员只能被定义一次。而且我们不能在static函数体内使用this指针。
+
+```cpp
+class Account {
+public:
+    void calculate() { amount += amount * interestRate; }
+	static double rate() { return interestRate; }
+    static void rate(double);
+private:
+    std::string owner;
+    static double interestRate;
+    static double initRate();
+}
+```
+
