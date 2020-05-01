@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>爬虫 on Dereen - 深海游泳</title>
+    <link>https://happy.dereen.top/tags/%E7%88%AC%E8%99%AB/</link>
+    <description>Recent content in 爬虫 on Dereen - 深海游泳</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 06 Oct 2018 12:46:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://happy.dereen.top/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PythonNotes.爬虫</title>
+      <link>https://happy.dereen.top/post/pythonnotes05/</link>
+      <pubDate>Sat, 06 Oct 2018 12:46:25 +0800</pubDate>
+      
+      <guid>https://happy.dereen.top/post/pythonnotes05/</guid>
+      <description>要使用Python 抓取网页，首先我们要学习下面四个模块： 包 作用 webbrowser 打开浏览器获取指定页面； requests 从因特网下载文件和网页； Beautiful Soup 解析HTML，即网页编</description>
+    </item>
+    
+  </channel>
+</rss>
