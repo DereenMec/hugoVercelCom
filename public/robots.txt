@@ -1,2 +1,0 @@
-User-agent: *
-Sitemap: https://happy.dereen.top/sitemap.xml
