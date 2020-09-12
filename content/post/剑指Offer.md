@@ -277,7 +277,7 @@ private:
 
 ### 思路及代码
 
-非递减数组，经过旋转后，有一个位置出现了递减，所以只要找出该位置即可，从前往后遇到递减输出后者，从前往后遇到递增，输出后者。
+非递减数组，经过旋转后，有一个位置出现了递减，所以只要找出该位置即可，从前往后遇到递减输出后者，从后往前遇到递增，输出后者。
 
 ```cpp
 int minNumberInRotateArray(vector<int> rotateArray) {
@@ -1898,758 +1898,1084 @@ public:
 };
 ```
 
-## 
+## 圆圈中最后剩下的数
 
 ### 题目描述
 
+每年六一儿童节,牛客都会准备一些小礼物去看望孤儿院的小朋友,今年亦是如此。HF作为牛客的资深元老,自然也准备了一些小游戏。其中,有个游戏是这样的:首先,让小朋友们围成一个大圈。然后,他随机指定一个数m,让编号为0的小朋友开始报数。每次喊到m-1的那个小朋友要出列唱首歌,然后可以在礼品箱中任意的挑选礼物,并且不再回到圈中,从他的下一个小朋友开始,继续0...m-1报数....这样下去....直到剩下最后一个小朋友,可以不用表演,并且拿到牛客名贵的“名侦探柯南”典藏版(名额有限哦!!^_^)。请你试着想下,哪个小朋友会得到这份礼品呢？(注：小朋友的编号是从0到n-1)
 
+如果没有小朋友，请返回-1
+
+### 思路及代码
+
+1. 递归法，假设f(n, m) 表示最终留下元素的序号。比如上例子中表示为:f(5,3) = 3
+
+   首先，长度为 n 的序列会先删除第 m % n 个元素，然后剩下一个长度为 n - 1 的序列。那么，我们可以递归地求解 f(n - 1, m)，就可以知道对于剩下的 n - 1 个元素，最终会留下第几个元素，我们设答案为 x = f(n - 1, m)。
+
+   由于我们删除了第 m % n 个元素，将序列的长度变为 n - 1。当我们知道了 f(n - 1, m) 对应的答案 x 之后，我们也就可以知道，长度为 n 的序列最后一个删除的元素，应当是从 m % n 开始数的第 x 个元素。因此有
+   $$
+   f(n, m) = (m \% n + x) \% n = (m + x) \% n
+   $$
+   当n等于1时，f(1,m) = 0
+
+```cpp
+class Solution {
+public:
+    int LastRemaining_Solution(int n, int m)
+    {
+        if (m <= 0 || n <= 0)
+            return -1;
+        return f(n, m);
+    }
+    
+    int f(int n, int m)
+    {
+        if (n==1)
+            return 0;
+        int x = f(n-1, m);
+        return (m+x) % n;
+    }
+};
+```
+
+2. 根据上面的方法可知，
+   f[1] = 0
+   f[2] = (f{1] + m) % 2
+   f[3] = (f[2] + m) % 3
+   ...
+   f[n] = (f[n-1] + m) % n
+   所以代码如下：
+
+```cpp
+class Solution {
+public:
+ 
+    int LastRemaining_Solution(int n, int m)
+    {
+        if (n <= 0) return -1;
+        int index = 0;
+        for (int i=2; i<=n; ++i) {
+            index = (index + m) % i;
+        }
+        return index;
+    }
+};
+```
+
+## 求1+2+3+...+n
+
+### 题目描述
+
+求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+
+### 思路及代码
+
+骚操作，这里当n =1 时，对于`&&`操作符，前面已经为假，也就没有必要再看后面，也就是递归函数的出口。
+
+```cpp
+class Solution {
+public:
+    int Sum_Solution(int n) {
+        bool x = n > 1 && (n += Sum_Solution(n-1)); // bool x只是为了不报错
+        return n;
+    }
+};
+```
+
+## 不用加减乘除做加法
+
+### 题目描述
+
+写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。
+
+### 思路及代码
+
+异或操作可以计算两个数无进位和，而两个数和需要进位的位置可以用`& and <<`计算出来，对无进位和和进位继续如上步骤，直到进位为0即可。
+
+![图片说明](https://uploadfiles.nowcoder.com/images/20200505/284295_1588688021116_933571186EC12CADAFC6064813BE06D4)
+
+```cpp
+class Solution
+{
+public:
+    int Add(int num1, int num2)
+    {
+        while (num2)
+        {
+            int c = (num1 & num2) << 1;
+            num1 = num1 ^ num2;
+            num2 = c;
+        }
+        return num1;
+    }
+};
+```
+
+## 把字符串转换成整数
+
+### 题目描述
+
+将一个字符串转换成一个整数，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0
 
 ### 思路及代码
 
 
 
 ```cpp
+class Solution
+{
+public:
+    int StrToInt(string str)
+    {
+        if (str.empty()) return 0;
+        int sz = str.size();
+        int dis = '1' - 1;
+        int digit;
+        int first_not_zero = 0;
+        int negative = 1;
+        if (str[first_not_zero] == '-') // 如果是负数
+        {
+            negative = -1;
+            first_not_zero++;
+        }
 
+        while ((str[first_not_zero] == '0' || str[first_not_zero] == '+') && first_not_zero < sz) ++first_not_zero;             // 忽略前面的0和+号
+        int ret = 0;
+        for (int i = first_not_zero; i < sz; ++i)
+        {
+            if (str[i] >= '0' && str[i] <= '9')
+            {
+                digit = pow(10, sz - i - 1);
+                ret += (str[i] - dis) * digit;
+            }
+            else
+                return 0;
+        }
+        return ret * negative;
+    }
+};
+```
+
+## 数组中重复的数字
+
+### 题目描述
+
+在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。
+
+### 思路及代码
+
+1. 哈希+遍历
+
+```cpp
+class Solution {
+public:
+    // Parameters:
+    //        numbers:     an array of integers
+    //        length:      the length of array numbers
+    //        duplication: (Output) the duplicated number in the array number
+    // Return value:       true if the input is valid, and there are some duplications in the array number
+    //                     otherwise false
+    bool duplicate(int numbers[], int length, int* duplication) {
+        vector<bool> f(length, false);
+        for (int i=0; i<length; ++i) {
+            if (!f[numbers[i]]) {
+                f[numbers[i]] = true; 
+            }
+            else {
+                *duplication = numbers[i];
+                return true;
+            }
+        }
+        return false;
+    }
+};
+
+```
+
+2. 就地算法
+
+https://blog.nowcoder.net/n/f09bb57d1c204a5ea733f26fc3610f1c?f=comment
+
+```cpp
+class Solution {
+public:
+    // Parameters:
+    //        numbers:     an array of integers
+    //        length:      the length of array numbers
+    //        duplication: (Output) the duplicated number in the array number
+    // Return value:       true if the input is valid, and there are some duplications in the array number
+    //                     otherwise false
+    bool duplicate(int numbers[], int length, int* duplication) {
+        for (int i = 0; i < length; ++i)
+        {
+            while (numbers[i]!= i)
+            {
+
+                if (numbers[i] == numbers[numbers[i]])
+                {
+                    *duplication = numbers[i];
+                    return true;
+                }
+                else{
+                    swap(numbers[i], numbers[numbers[i]]);
+                }
+            }
+        }
+        return false;
+    }
+};
+```
+
+## 构建乘积数组
+
+### 题目描述
+
+给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],其中B中的元素B[i]=A[0]*A[1]*...*A[i-1]*A[i+1]*...*A[n-1]。不能使用除法。（注意：规定B[0] = A[1] * A[2] * ... * A[n-1]，B[n-1] = A[0] * A[1] * ... * A[n-2];）
+
+对于A长度为1的情况，B无意义，故而无法构建，因此该情况不会存在。
+
+### 思路及代码
+
+思路见：https://blog.nowcoder.net/n/df9f9a1edefd42cc9558f2f1f17a37fe?f=comment
+
+```cpp
+class Solution {
+public:
+    vector<int> multiply(const vector<int>& A) {
+        vector<int> ret(A.size(), 1);
+        if (A.size() <= 1)
+            return ret;
+        for (int i = 1; i< A.size(); ++i)
+        {
+            ret[i] = ret[i - 1] * A[i - 1];
+        }
+        int temp = 1;
+        for (int i = A.size() - 2; i >= 0; --i)
+        {
+            temp *= A[i+1];
+            ret[i] = ret[i] * temp;
+        }
+        return ret;
+    }
+};
+```
+
+## 正则表达式匹配
+
+### 题目描述
+
+请实现一个函数用来匹配包括'.'和'*'的正则表达式。模式中的字符'.'表示任意一个字符，而'*'表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"和"ab*a"均不匹配
+
+### 思路及代码
+
+思想看这里：https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/solution/zhu-xing-xiang-xi-jiang-jie-you-qian-ru-shen-by-je/
+
+```cpp
+class Solution {
+public:
+    bool match(char* str, char* pattern) {
+        int n = strlen(str);
+        int m = strlen(pattern);
+        vector<vector<int>> f;
+        f.resize(n + 1);
+        for (auto &vec : f) vec.resize(m + 1);
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= m; j++) {
+                //分成空正则和非空正则两种
+                if (j == 0) {
+                    f[i][j] = i == 0;
+                } else {
+                    //非空正则分为两种情况 * 和 非*
+                    if (pattern[j - 1] != '*') {
+                        if (i > 0 && (str[i - 1] == pattern[j - 1] || pattern[j-1] == '.')) {
+                            f[i][j] = f[i - 1][j - 1];
+                        }
+                    } else {
+                        //碰到 * 了，分为看和不看两种情况
+                        //不看
+                        if (j >= 2) {
+                            f[i][j] |= f[i][j - 2];
+                        }
+                        //看
+                        if (i >= 1 && j >= 2 && (str[i - 1] == pattern[j - 2] || pattern[j - 2] == '.')) {
+                            f[i][j] |= f[i - 1][j];
+                        }
+                    }
+                }
+            }
+        }
+        return f[n][m];
+    }
+};
 ```
 
 ## 
 
 ### 题目描述
 
-
+请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串"+100","5e2","-123","3.1416"和"-1E-16"都表示数值。 但是"12e","1a3.14","1.2.3","+-5"和"12e+4.3"都不是。
 
 ### 思路及代码
 
+太麻烦了，直接用Python瞎搞一搞
 
+```python
 
-```cpp
-
+# -*- coding:utf-8 -*-
+class Solution:
+    # s字符串
+    def isNumeric(self, s):
+        # write code here
+        try:
+            float(s);
+            return True;
+        except:
+            return False;
+            
 ```
 
-## 
+## 字节流中第一个不重复的字符
 
 ### 题目描述
 
-
+请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符"go"时，第一个只出现一次的字符是"g"。当从该字符流中读出前六个字符“google"时，第一个只出现一次的字符是"l"。
 
 ### 思路及代码
 
-
+看到第一个我们想到队列，看到只出现一次我们想到哈希，于是：
 
 ```cpp
+class Solution
+{
+public:
+  //Insert one char from stringstream
+    unordered_map<char, int> map;
+    queue<char> q; 
+    void Insert(char ch)
+    {
+         if (map.find(ch) == map.end())
+             q.push(ch);
+         ++map[ch];
+    }
+  //return the first appearence once char in current stringstream
+    char FirstAppearingOnce()
+    {
+        while (!q.empty())
+            if (map[q.front()] == 1)
+                return q.front();
+            else
+                q.pop();
+        return '#';
+    }
 
+};
 ```
 
-## 
+## 链表中环的入口节点
 
 ### 题目描述
 
-
+给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。
 
 ### 思路及代码
 
+题解：https://blog.nowcoder.net/n/9d3ffa4b004e43d1aff512141d0d7dac?f=comment
 
+1. hash set
 
 ```cpp
-
+class Solution {
+public:
+    ListNode* EntryNodeOfLoop(ListNode* pHead)
+    {
+        unordered_set<ListNode*> st;
+        while (pHead) {
+            if (st.find(pHead) == st.end()) {
+                st.insert(pHead);
+                pHead = pHead->next;
+            }
+            else {
+                return pHead;
+            }
+        }
+        return nullptr;
+    }
+};
 ```
 
-## 
+2. 快慢指针
+
+```cpp
+class Solution {
+public:
+    ListNode* EntryNodeOfLoop(ListNode* pHead)
+    {
+        ListNode *fast = pHead;
+        ListNode *slow = pHead;
+        while (fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) break;
+        }
+        if (!fast || !fast->next) return nullptr;
+        fast = pHead;
+        while (fast != slow) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return fast;
+    }
+};
+```
+
+## 删除链表中的重复节点
 
 ### 题目描述
 
-
+在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1->2->3->3->4->4->5 处理后为 1->2->5
 
 ### 思路及代码
 
-
+1. 用两个指针，如果发现重复的值就加入set，然后遍历一次链表，删除重复的值。这里注意`count()`这个函数用来检查set中是否有传入的值，有则返回1，否则返回0；
 
 ```cpp
+class Solution {
+public:
+    ListNode* deleteDuplication(ListNode* pHead)
+    {
+        if (!pHead) return pHead;
+        set<int> st;
+        ListNode *pre = pHead;
+        ListNode *cur = pHead->next;
+        while (cur) {
+            if (pre->val == cur->val) {
+                st.insert(pre->val);
+            }
+            pre = pre->next;
+            cur = cur->next;
+        }
 
+        ListNode *vhead = new ListNode(-1);
+        vhead->next = pHead;
+        pre = vhead;
+        cur = pHead;
+        while (cur) {
+            if (st.count(cur->val)) {
+                cur = cur->next;
+                pre->next = cur;     
+            }
+            else {
+                pre = pre->next;
+                cur = cur->next;
+            }
+        }
+        return vhead->next;
+    }
+};
 ```
 
-## 
+2. 使用双指针
+
+```cpp
+class Solution {
+public:
+    ListNode* deleteDuplication(ListNode* pHead)
+    {
+        ListNode *vhead = new ListNode(-1);
+        vhead->next = pHead;
+        ListNode *pre = vhead, *cur = pHead;        
+        while (cur) {
+            if (cur->next && cur->val == cur->next->val) {
+                cur = cur->next;
+                while (cur->next && cur->val == cur->next->val) {
+                    cur = cur->next;
+                }
+                cur = cur->next;
+                pre->next = cur;
+            }
+            else {
+                pre = cur;
+                cur = cur->next;
+            }
+        }
+        return vhead->next;
+    }
+};
+```
+
+## 二叉树的下一个节点
 
 ### 题目描述
 
-
+给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。
 
 ### 思路及代码
 
-
+1. 先按`next`指针找到根节点，然后将中序遍历的结果存入一个vector，遍历这个vector，找出下一个节点即可。
 
 ```cpp
-
+/*
+struct TreeLinkNode {
+    int val;
+    struct TreeLinkNode *left;
+    struct TreeLinkNode *right;
+    struct TreeLinkNode *next;
+    TreeLinkNode(int x) :val(x), left(NULL), right(NULL), next(NULL) {
+        
+    }
+};
+*/
+class Solution {
+public:
+    vector<TreeLinkNode*> preOrderList;
+    TreeLinkNode* GetNext(TreeLinkNode* pNode)
+    {
+        if (!pNode)
+            return nullptr;
+        TreeLinkNode *root = pNode;
+        while (root->next)
+        {
+            root = root->next;
+        }
+        preOrder(root);
+        for(int i = 0; i < preOrderList.size() - 1; i++)
+        {
+            if (preOrderList[i] == pNode)
+                return preOrderList[++i];
+        }
+        return nullptr;
+        
+        
+    }
+    
+    void preOrder(TreeLinkNode *root)
+    {
+        if (!root)
+            return;
+        preOrder(root->left);
+        preOrderList.push_back(root);
+        preOrder(root->right);
+    }
+};
 ```
 
-## 
+2. 分类分析，如果有右子树，返回右子树左子树的最左儿子。如果没有右子树一直迭代到cur为父的左子，此时父为下一个。
+
+```cpp
+class Solution {
+public:
+    TreeLinkNode* GetNext(TreeLinkNode* pNode)
+    {
+        if (pNode == nullptr) return nullptr;
+
+// 如果有右子
+        if (pNode->right) {
+            TreeLinkNode* cur = pNode->right;
+            while (cur->left) {
+                cur = cur->left;
+            }
+            return cur;
+        }
+// 无右子，一直迭代到cur为父的左子，此时父为下一个
+        else {
+            TreeLinkNode* pre = pNode;
+            TreeLinkNode* cur = pNode->next;
+            while(cur != nullptr && cur->left != pre) {
+                pre = cur;
+                cur = cur->next;
+            }
+            return cur;
+        }
+    }
+};
+```
+
+## 对称的二叉树
 
 ### 题目描述
 
-
+请实现一个函数，用来判断一棵二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。
 
 ### 思路及代码
 
-
+对比左子树一直往左走和右子树一直往右走，和左子树一直往右走和右子树一直往左走。
 
 ```cpp
-
+class Solution {
+public:
+    bool isSame(TreeNode *root1, TreeNode *root2) {
+        if (!root1 && !root2) return true;
+        if (!root1 || !root2) return false;
+        return root1->val == root2->val &&
+        isSame(root1->left, root2->right) &&
+        isSame(root1->right, root2->left);
+    }
+    bool isSymmetrical(TreeNode* pRoot)
+    {
+        return isSame(pRoot, pRoot);
+    }
+ 
+};
 ```
 
-## 
+## 按之字形顺序打印二叉树
 
 ### 题目描述
 
-
+请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。
 
 ### 思路及代码
 
-
+使用双端队列，按层打印的窍门是使用`while(sz--)`，遵循尾插尾取，头插头取，同时注意前一个先左后右，后一次先右后左。
 
 ```cpp
-
+/*
+struct TreeNode {
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+    TreeNode(int x) :
+            val(x), left(NULL), right(NULL) {
+    }
+};
+*/
+class Solution
+{
+public:
+    vector<vector<int>> Print(TreeNode *pRoot)
+    {
+        vector<vector<int>> ret;
+        if (!pRoot) return ret;
+        vector<int> temp;
+        deque<TreeNode *> q;
+        q.push_back(pRoot);
+        bool leftToRight = true;
+        while (!q.empty())
+        {
+            auto sz = q.size();
+            while (sz--)
+            {
+                if (leftToRight)
+                {
+                    auto t = q.back();
+                    temp.push_back(t->val);
+                    q.pop_back();
+                    if (t->left) q.push_front(t->left);
+                    if (t->right) q.push_front(t->right);
+                }
+                else
+                {
+                    auto t = q.front();
+                    temp.push_back(t->val);
+                    q.pop_front();
+                    if (t->right) q.push_back(t->right);
+                    if (t->left) q.push_back(t->left);
+                }
+            }
+            ret.push_back(temp);
+            temp.clear();
+            leftToRight = !leftToRight;
+        }
+        return ret;
+    }
+};
 ```
 
-## 
+## 把二叉树打印成多行
 
 ### 题目描述
 
-
+从上到下按层打印二叉树，同一层结点从左至右输出。每一层输出一行。
 
 ### 思路及代码
 
-
+做了上一道题目，这道简直是小儿科。
 
 ```cpp
-
+class Solution {
+public:
+        vector<vector<int> > Print(TreeNode* pRoot) {
+            vector<vector<int>> ret;
+            if (!pRoot) return ret;
+            vector<int> temp;
+            queue<TreeNode *> q;
+            q.push(pRoot);
+            while (!q.empty())
+            {
+                auto sz = q.size();
+                while (sz--)
+                {
+                        auto t = q.front();
+                        temp.push_back(t->val);
+                        q.pop();
+                        if (t->left) q.push(t->left);
+                        if (t->right) q.push(t->right);
+                }
+                ret.push_back(temp);
+                temp.clear();
+            }
+            return ret;
+        }
+};
 ```
 
-## 
+## 序列化二叉树
 
 ### 题目描述
 
+请实现两个函数，分别用来序列化和反序列化二叉树
 
+二叉树的序列化是指：把一棵二叉树按照某种遍历方式的结果以某种格式保存为字符串，从而使得内存中建立起来的二叉树可以持久保存。序列化可以基于先序、中序、后序、层序的二叉树遍历方式来进行修改，序列化的结果是一个字符串，序列化时通过 某种符号表示空节点（#），以 ！ 表示一个结点值的结束（value!）。
+
+二叉树的反序列化是指：根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。
+
+例如，我们可以把一个只有根节点为1的二叉树序列化为"1,"，然后通过自己的函数来解析回这个二叉树
 
 ### 思路及代码
 
-
+https://blog.nowcoder.net/n/5d08d4d2763941c492f347782283e425?f=comment
 
 ```cpp
+/*
+struct TreeNode {
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+    TreeNode(int x) :
+            val(x), left(NULL), right(NULL) {
+    }
+};
+*/
+class Solution {
+public:
+    char* Serialize(TreeNode *root) {    
+        if (!root) {
+            return "#";
+        }
 
+        string res = to_string(root->val);
+        res.push_back(',');
+
+        char* left = Serialize(root->left);
+        char* right = Serialize(root->right);
+
+        char* ret = new char[strlen(left)+strlen(right)+res.size()];
+        // 如果是string类型，直接用operator += ,这里char* 需要用函数
+        strcpy(ret,res.c_str());
+        strcat(ret,left);
+        strcat(ret,right);
+
+        return ret;
+    }
+    TreeNode* deseri(char *&s) {
+        if (*s == '#') {
+            ++s;
+            return nullptr;
+        }
+
+        // 构造根节点值
+        int num = 0;
+        while (*s != ',') {
+            num = num * 10 + (*s - '0');
+            ++s;
+        }
+        ++s;
+        // 递归构造树
+        TreeNode *root = new TreeNode(num);
+        root->left = deseri(s);
+        root->right = deseri(s);
+
+        return root;
+    }
+
+    TreeNode* Deserialize(char *str) {
+        return deseri(str);
+    }
+};
 ```
 
-## 
+## 二叉搜索树的第K个节点
 
 ### 题目描述
 
-
+给定一棵二叉搜索树，请找出其中的第k小的结点。例如， （5，3，7，2，4，6，8）  中，按结点数值大小顺序第三小结点的值为4。
 
 ### 思路及代码
 
-
+使用一个栈模拟非递归先序遍历，弹出第K个值即可。
 
 ```cpp
-
+class Solution {
+public:
+    TreeNode* KthNode(TreeNode* pRoot,unsigned int k)
+    {
+        if(!pRoot) return nullptr;
+        stack<TreeNode *> res;
+        TreeNode* p =pRoot;
+        while(!res.empty() || p ){//res是空 and 遍历到空节点
+            while(p){
+                res.push(p);
+                p = p->left;
+            }
+            TreeNode* node = res.top();
+            res.pop();
+            if((--k)==0) return node;
+            p = node->right;
+        }
+        return nullptr;
+    }
+};
 ```
 
-## 
+## 数据流中的中位数
 
 ### 题目描述
 
-
+如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。我们使用Insert()方法读取数据流，使用GetMedian()方法获取当前读取数据的中位数。
 
 ### 思路及代码
 
-
+1. 用一个vector每次要取出的时候排序，然后取出中位数；
+2. 使用插入排序；
+3. 使用一个大顶堆，储存中位数的左边，用一个小顶堆储存中位数的右边。插入后如果两个堆元素相等，则输出两个堆顶数字的平均值，否则单独输出一个数。
 
 ```cpp
+class Solution {
+    priority_queue<int> lo;                              // max heap
+    priority_queue<int, vector<int>, greater<int>> hi;   // min heap
+
+public:
+    // Adds a number into the data structure.
+    void Insert(int num)
+    {
+        lo.push(num);                                    // Add to max heap
+
+        hi.push(lo.top());                               // balancing step
+        lo.pop();
+
+        if (lo.size() < hi.size()) {                     // maintain size property
+            lo.push(hi.top());
+            hi.pop();
+        }
+    }
+
+    // Returns the median of current data stream
+    double GetMedian()
+    {
+        return lo.size() > hi.size() ? (double) lo.top() : (lo.top() + hi.top()) * 0.5;
+    }
+};
 
 ```
 
-## 
+## 滑动窗口的最大值
 
 ### 题目描述
 
+给定一个数组和滑动窗口的大小，找出所有滑动窗口里数值的最大值。例如，如果输入数组{2,3,4,2,6,2,5,1}及滑动窗口的大小3，那么一共存在6个滑动窗口，他们的最大值分别为{4,4,6,6,6,5}； 针对数组{2,3,4,2,6,2,5,1}的滑动窗口有以下6个： {[2,3,4],2,6,2,5,1}， {2,[3,4,2],6,2,5,1}， {2,3,[4,2,6],2,5,1}， {2,3,4,[2,6,2],5,1}， {2,3,4,2,[6,2,5],1}， {2,3,4,2,6,[2,5,1]}。
 
+窗口大于数组长度的时候，返回空。
 
 ### 思路及代码
 
-
+https://blog.nowcoder.net/n/070e0808332c45078c7a128acb89141a?f=comment
 
 ```cpp
-
+class Solution {
+public:
+    vector<int> maxInWindows(const vector<int>& num, unsigned int size)
+    {
+        vector<int> ret;
+        if (num.size() == 0 || size < 1 || num.size() < size)
+            return ret;
+        int n = num.size();
+        deque<int> dq;
+        for (int i = 0; i < n; ++i)
+        {
+            while(!dq.empty() && num[dq.back()] < num[i])
+                dq.pop_back();
+            dq.push_back(i);
+            
+            if (dq.front() + size <= i)
+                dq.pop_front();
+            
+            if (i + 1 >= size)
+                ret.push_back(num[dq.front()]);
+        }
+        return ret;
+    }
+};
 ```
 
-## 
+## 矩阵中的路径
 
 ### 题目描述
 
-
+请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向左，向右，向上，向下移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。 例如$ \begin{bmatrix} a & b & c &e \\ s & f & c & s \\ a & d & e& e\\ \end{bmatrix}\quad$ 矩阵中包含一条字符串"bcced"的路径，但是矩阵中不包含"abcb"路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入该格子。
 
 ### 思路及代码
 
-
+https://blog.nowcoder.net/n/82fcf80d483443fb8495df7c56474b2a?f=comment
 
 ```cpp
+class Solution {
+public:
+    char *mat = nullptr;
+    int h = 0, w = 0;
+    int str_len = 0;
+    int dir[5] = {-1, 0, 1, 0, -1};
 
+    bool dfs(int i, int j, int pos, char *str) {
+        // 因为dfs调用前，没有进行边界检查，
+        // 所以需要第一步进行边界检查，
+        // 因为后面需要访问mat中元素，不能越界访问
+        if (i < 0 || i >= h || j < 0 || j >= w) {
+            return false;
+        }
+
+        char ch = mat[i * w + j];
+        // 判断是否访问过
+        // 如果没有访问过，判断是否和字符串str[pos]匹配
+        if (ch == '#' || ch != str[pos]) {
+            return false;
+        }
+
+         // 如果匹配，判断是否匹配到最后一个字符
+        if (pos + 1  == str_len) {
+            return true;
+        }
+
+        // 说明当前字符成功匹配，标记一下，下次不能再次进入
+        mat[i * w + j] = '#';
+        for (int k = 0; k < 4; ++k) {
+            if (dfs(i + dir[k], j + dir[k + 1], pos + 1, str)) {
+                return true;
+            }
+        } 
+        // 如果4个方向都无法匹配 str[pos + 1]
+        // 则回溯， 将'#' 还原成 ch          
+        mat[i * w + j] = ch;
+        // 说明此次匹配是不成功的
+        return false;   
+    }
+    bool hasPath(char* matrix, int rows, int cols, char* str)
+    {
+        mat = matrix;
+        h = rows, w = cols;
+         str_len = strlen(str);
+
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                if (dfs(i, j, 0, str)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
 ```
 
-## 
+## 机器人的运动范围
 
 ### 题目描述
 
-
+地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？
 
 ### 思路及代码
 
-
+https://blog.nowcoder.net/n/37a195c004724d62b10d28d136240661?f=comment
 
 ```cpp
+class Solution {
 
+public:
+    using V = vector<int>;
+    using VV = vector<V>;    
+    int dir[5] = {-1, 0, 1, 0, -1};
+
+    int check(int n) {
+        int sum = 0;
+
+        while (n) {
+            sum += (n % 10);
+            n /= 10;
+        }
+
+        return sum;
+    }
+
+    void dfs(int x, int y, int sho, int r, int c, int &ret, VV &mark) {
+        // 检查下标 和 是否访问
+        if (x < 0 || x >= r || y < 0 || y >= c || mark[x][y] == 1) {
+            return;
+        }
+        // 检查当前坐标是否满足条件
+        if (check(x) + check(y) > sho) {
+            return;
+        }
+        // 代码走到这里，说明当前坐标符合条件
+        mark[x][y] = 1;
+        ret += 1;
+
+        for (int i = 0; i < 4; ++i) {
+            dfs(x + dir[i], y + dir[i + 1], sho, r, c, ret, mark);
+        }
+
+
+
+    } 
+    int movingCount(int sho, int rows, int cols)
+    {
+        if (sho <= 0) {
+            return 0;
+        }
+
+        VV mark(rows, V(cols, -1));
+        int ret = 0;
+        dfs(0, 0, sho, rows, cols, ret, mark);
+        return ret;
+    }
+};
 ```
 
-## 
+## 剪绳子
 
 ### 题目描述
 
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
+给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n>1并且m>1，m<=n），每段绳子的长度记为k[1],...,k[m]。请问k[1]x...xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。
 
 ### 思路及代码
 
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
+https://www.bilibili.com/video/BV1C7411V7s6?p=2
 
 ```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
-```
-
-## 
-
-### 题目描述
-
-
-
-### 思路及代码
-
-
-
-```cpp
-
+class Solution {
+public:
+    int cutRope(int number) {
+        if (number < 2)
+            return 0;
+        if (number == 2)
+            return 1;
+        if (number == 3)
+            return 2;
+        int * a = new int[number+1];
+        a[1] = 0;
+        a[2] = 2;
+        a[3] = 3;
+        for (int i = 4; i <= number; ++i)
+        {
+            int temp = 0;
+            for (int j = 2; j <= i/2; ++j)
+            {
+                int val = a[i- j] * a[j];
+                temp = val > temp ? val : temp;
+            }
+            a[i] = temp;
+        }
+        int target = a[number];
+        delete[] a;
+        return target;
+    }
+};
 ```
